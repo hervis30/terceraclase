@@ -22,7 +22,9 @@ app.post('/addprod', (req, res) => {
 
 app.get('/login/:username', (req, res, next) => {
     if (req.params.username == "pcana") {
-        res.send(`Bienvenido ${req.params.username}`)
+        //res.send(`Bienvenido ${req.params.username}`)
+        res.redirect('/') //redireccionar al endpoint /
+
         next();
     }
     else {
