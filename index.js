@@ -16,8 +16,18 @@ app.get('/', (req, res) => {
 
 app.post('/addprod', (req, res) => {
     const { ref, desc } = req.body
-    res.send(`Producto enviado correctamente con descrupcion: ${desc} y referencia: ${ref}`)
+    //res.send(`Producto enviado correctamente con descrupcion: ${desc} y referencia: ${ref}`)
+    res.json(req.body)
+})
 
+app.get('/login/:username', (req, res, next) => {
+    if (req.params.username == "pcana") {
+        res.send(`Bienvenido ${req.params.username}`)
+        next();
+    }
+    else {
+        next(new Error("Usuario Invalido..."))
+    }
 })
 
 app.listen(port, () => console.log(`Server in http://localhost:${port}`));
